@@ -27,12 +27,12 @@ model Account {
 }
 
 model User {
-  id    String  @id @default(cuid())
-  name  String?
-  email String? @unique
-
-  passwordHash String?
-  Account      Account[]
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  passwordHash  String?
+  Account       Account[]
 
   memberId String?
   Member   Member?
