@@ -30,7 +30,7 @@ const HomePage = async () => {
           </form>
         </div>
       ) : (
-        <p />
+        <p>Not signed in</p>
       )}
     </div>
   );

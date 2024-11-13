@@ -44,7 +44,7 @@ const UserMenu = ({ user }: Props) => {
           Edit profile
         </DropdownItem>
 
-        <DropdownItem color="danger" onClick={signOutUser}>
+        <DropdownItem color="danger" onClick={async () => signOutUser()}>
           Log Out
         </DropdownItem>
       </DropdownMenu>
