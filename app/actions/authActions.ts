@@ -1,7 +1,7 @@
 "use server";
 
 import { auth, signIn, signOut } from "@/auth";
-import { sendPasswordResetEmail, sendVerificationEmail } from "@/lib/mail";
+// import { sendPasswordResetEmail, sendVerificationEmail } from "@/lib/mail";
 import { prisma } from "@/lib/prisma";
 import { LoginSchema } from "@/lib/schemas/loginSchema";
 import {
@@ -10,7 +10,7 @@ import {
   registerSchema,
   RegisterSchema,
 } from "@/lib/schemas/registerSchema";
-import { generateToken, getTokenByToken } from "@/lib/tokens";
+// import { generateToken, getTokenByToken } from "@/lib/tokens";
 import { ActionResult } from "@/types";
 import { TokenType, User } from "@prisma/client";
 import bcrypt from "bcryptjs";
@@ -25,19 +25,19 @@ export async function signInUser(
     if (!existingUser || !existingUser.email)
       return { status: "error", error: "Invalid credentials" };
 
-    if (!existingUser.emailVerified) {
-      const { token, email } = await generateToken(
-        existingUser.email,
-        TokenType.VERIFICATION
-      );
+    // if (!existingUser.emailVerified) {
+    //   const { token, email } = await generateToken(
+    //     existingUser.email,
+    //     TokenType.VERIFICATION
+    //   );
 
-      await sendVerificationEmail(email, token);
+    //   await sendVerificationEmail(email, token);
 
-      return {
-        status: "error",
-        error: "Please verify your email before logging in",
-      };
-    }
+    //   return {
+    //     status: "error",
+    //     error: "Please verify your email before logging in",
+    //   };
+    // }
 
     await signIn("credentials", {
       email: data.email,

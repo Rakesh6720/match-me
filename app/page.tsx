@@ -12,9 +12,9 @@ const HomePage = async () => {
         <div>
           <pre>{JSON.stringify(session, null, 2)}</pre>
           <form
-            action={() => {
+            action={async () => {
               "use server";
-              signOut;
+              await signOut;
             }}
           >
             <Button
