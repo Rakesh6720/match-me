@@ -35,7 +35,7 @@ model User {
   Account       Account[]
   image         String?
   memberId      String?
-  Member        Member?
+  member        Member?
 }
 
 model Member {
