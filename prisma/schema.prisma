@@ -33,9 +33,9 @@ model User {
   emailVerified DateTime?
   passwordHash  String?
   Account       Account[]
-
-  memberId String?
-  Member   Member?
+  image         String?
+  memberId      String?
+  Member        Member?
 }
 
 model Member {
