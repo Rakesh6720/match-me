@@ -13,6 +13,8 @@ import { GiPadlock } from "react-icons/gi";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { registerUser } from "@/app/actions/authActions";
+import { handleFormServerErrors } from "@/lib/util";
 
 const stepSchemas = [registerSchema, profileSchema];
 
@@ -34,7 +36,14 @@ export default function RegisterForm() {
 
   const router = useRouter();
 
-  const onSubmit = async () => {};
+  const onSubmit = async () => {
+    const result = await registerUser(getValues());
+    if (result.status === "success") {
+      router.push("/register/success");
+    } else {
+      handleFormServerErrors(result, setError);
+    }
+  };
 
   const getStepContent = (step: number) => {
     switch (step) {
