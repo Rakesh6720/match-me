@@ -1,11 +1,11 @@
-import Link from "next/link";
 import React from "react";
+import { getMembers } from "../actions/memberActions";
 
-const MembersPage = () => {
+const MembersPage = async () => {
+  const members = await getMembers();
   return (
     <div>
-      <h1>Members</h1>
-      <Link href="/">Home</Link>
+      {members && members.map(({ name, id }) => <p key={id}>{name}</p>)}
     </div>
   );
 };
