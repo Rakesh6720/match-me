@@ -99,16 +99,16 @@ export async function registerUser(
         name,
         email,
         passwordHash: hashedPassword,
-        member: {
-          create: {
-            name,
-            description,
-            city,
-            country,
-            dateOfBirth: new Date(dateOfBirth),
-            gender,
-          },
-        },
+        // member: {
+        //   create: {
+        //     name,
+        //     description,
+        //     city,
+        //     country,
+        //     dateOfBirth: new Date(dateOfBirth),
+        //     gender,
+        //   },
+        // },
       },
     });
 
