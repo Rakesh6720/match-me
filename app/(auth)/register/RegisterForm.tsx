@@ -8,6 +8,7 @@ import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const {
@@ -27,7 +28,7 @@ const RegisterForm = () => {
     if (result.status === "success") {
       router.push("/members");
     } else {
-      console.log(result.error);
+      toast.error(result.error as string);
     }
   };
 

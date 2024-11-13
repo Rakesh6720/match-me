@@ -2,6 +2,7 @@ import { auth, signOut } from "@/auth";
 import { Button } from "@nextui-org/react";
 import React from "react";
 import { FaRegSmile } from "react-icons/fa";
+import { signOutUser } from "./actions/authActions";
 
 const HomePage = async () => {
   const session = await auth();
@@ -14,7 +15,8 @@ const HomePage = async () => {
           <form
             action={async () => {
               "use server";
-              await signOut;
+              await signOutUser();
+              console.log("signing out");
             }}
           >
             <Button
