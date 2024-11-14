@@ -1,6 +1,14 @@
 "use client";
 
-import { Card, CardBody, CardHeader, Image } from "@nextui-org/react";
+import { calculateAge } from "@/lib/util";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Divider,
+  Image,
+  Link,
+} from "@nextui-org/react";
 import { Member } from "@prisma/client";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -25,7 +33,35 @@ const MemberSidebar = ({ member }: { member: Member }) => {
         alt="User profile main page"
         className="rounded-full mt-6 aspect-square object-cover"
       />
-      <CardBody></CardBody>
+      <CardBody>
+        <div className="flex flex-col items-center">
+          <div className="flex">
+            <div className="text-2xl">
+              {member.name}, {calculateAge(member.dateOfBirth)}
+            </div>
+          </div>
+          <div className="text-sm text-neutral-500">
+            {member.city}, {member.country}
+          </div>
+        </div>
+        <Divider className="my-3" />
+        <nav className="flex flex-col p-4 ml-4 text-2xl gap-4">
+          {navLinks.map((link) => (
+            <Link
+              href={link.href}
+              key={link.name}
+              className={`block rounded 
+                                ${
+                                  pathName === link.href
+                                    ? "text-default"
+                                    : "hover:text-default/50"
+                                }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+      </CardBody>
     </Card>
   );
 };
