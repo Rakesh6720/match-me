@@ -22,15 +22,6 @@ export async function toggleLikeMember(targetUserId: string, isLiked: boolean) {
           sourceUserId: userId,
           targetUserId,
         },
-        select: {
-          sourceMember: {
-            select: {
-              name: true,
-              image: true,
-              userId: true,
-            },
-          },
-        },
       });
     }
   } catch (error) {
