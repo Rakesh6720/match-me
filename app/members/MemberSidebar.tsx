@@ -2,8 +2,10 @@
 
 import { calculateAge } from "@/lib/util";
 import {
+  Button,
   Card,
   CardBody,
+  CardFooter,
   CardHeader,
   Divider,
   Image,
@@ -62,6 +64,17 @@ const MemberSidebar = ({ member }: { member: Member }) => {
           ))}
         </nav>
       </CardBody>
+      <CardFooter>
+        <Button
+          as={Link}
+          href="/members"
+          fullWidth
+          color="default"
+          variant="bordered"
+        >
+          Go back
+        </Button>
+      </CardFooter>
     </Card>
   );
 };
