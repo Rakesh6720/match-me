@@ -9,9 +9,11 @@ import LikeButton from "../components/LikeButton";
 
 type Props = {
   member: Member;
+  likeIds: string[];
 };
 
-export default function MemberCard({ member }: Props) {
+export default function MemberCard({ member, likeIds }: Props) {
+  const hasLiked = likeIds.includes(member.userId);
   return (
     <Card fullWidth as={Link} href={`/members/${member.userId}`} isPressable>
       <Image
@@ -22,7 +24,7 @@ export default function MemberCard({ member }: Props) {
         className="aspect-square object-cover"
       />
       <div className="absolute top-3 right-3 z-50">
-        <LikeButton targetId={member.userId} hasLiked={false} />
+        <LikeButton targetId={member.userId} hasLiked={hasLiked} />
       </div>
       <CardFooter className="flex justify-start bg-black overflow-hidden absolute bottom-0 z-10 bg-dark-gradient">
         <div className="flex flex-col text-white">
