@@ -2,23 +2,18 @@ import { getMemberByUserId } from "@/app/actions/memberActions";
 import { notFound } from "next/navigation";
 import React, { ReactNode } from "react";
 import MemberSidebar from "../MemberSidebar";
+import { getAuthUserId } from "@/app/actions/authActions";
+import { get } from "http";
 
-const layout = async ({
-  children,
-  params,
-}: {
-  children: ReactNode;
-  params: { userId: string };
-}) => {
-  const member = await getMemberByUserId(params.userId);
+const layout = async ({ children }: { children: ReactNode }) => {
+  const userId = await getAuthUserId();
+  const member = await getMemberByUserId(userId);
   if (!member) return notFound();
-
-  const basePath = `/members/${member.userId}`;
+  const basePath = `/members/edit`;
 
   const navLinks = [
-    { name: "Profile", href: `${basePath}` },
-    { name: "Photos", href: `${basePath}/photos` },
-    { name: "Chat", href: `${basePath}/chat` },
+    { name: "Edit Profile", href: `${basePath}` },
+    { name: "Update Photos", href: `${basePath}/photos` },
   ];
 
   return (

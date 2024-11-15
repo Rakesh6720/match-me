@@ -16,15 +16,14 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { HiReceiptPercent } from "react-icons/hi2";
 
-const MemberSidebar = ({ member }: { member: Member }) => {
+const MemberSidebar = ({
+  member,
+  navLinks,
+}: {
+  member: Member;
+  navLinks: { name: string; href: string }[];
+}) => {
   const pathName = usePathname();
-  const basePath = `/members/${member.userId}`;
-
-  const navLinks = [
-    { name: "Profile", href: `${basePath}` },
-    { name: "Photos", href: `${basePath}/photos` },
-    { name: "Chat", href: `${basePath}/chat` },
-  ];
 
   return (
     <Card className="w-full mt-10 items-center h-[80vh]">
