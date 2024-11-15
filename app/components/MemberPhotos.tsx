@@ -4,9 +4,9 @@ import { setMainImage } from "@/app/actions/userActions";
 import { Photo } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-//import DeleteButton from "./DeleteButton";
-// import MemberImage from "./MemberImage";
-// import StarButton from "./StarButton";
+import DeleteButton from "./DeleteButton";
+import MemberImage from "./MemberImage";
+import StarButton from "./StarButton";
 
 type Props = {
   photos: Photo[] | null;
@@ -56,7 +56,7 @@ export default function MemberPhotos({ photos, editing, mainImageUrl }: Props) {
 
   return (
     <div className="grid grid-cols-5 gap-3 p-5">
-      {/* {photos &&
+      {photos &&
         photos.map((photo) => (
           <div key={photo.id} className="relative">
             <MemberImage photo={photo} />
@@ -76,7 +76,7 @@ export default function MemberPhotos({ photos, editing, mainImageUrl }: Props) {
                   />
                 </div>
                 <div
-                  onClick={() => onDelete(photo)}
+                  //   onClick={() => onDelete(photo)}
                   className="absolute top-3 right-3 z-50"
                 >
                   <DeleteButton
@@ -90,7 +90,7 @@ export default function MemberPhotos({ photos, editing, mainImageUrl }: Props) {
               </>
             )}
           </div>
-        ))} */}
+        ))}
     </div>
   );
 }
