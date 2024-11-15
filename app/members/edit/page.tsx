@@ -1,9 +1,9 @@
-import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 import React from "react";
 import EditForm from "./EditForm";
 import { getMemberByUserId } from "@/app/actions/memberActions";
 import { getAuthUserId } from "@/app/actions/authActions";
 import { notFound } from "next/navigation";
+import CardInnerWrapper from "@/app/components/CardInnerWrapper";
 
 const MemberEditPage = async () => {
   const userId = await getAuthUserId();
@@ -11,17 +11,10 @@ const MemberEditPage = async () => {
   if (!member) return notFound();
 
   return (
-    <div>
-      <Card>
-        <CardHeader className="text-2xl font-semibold text-secondary">
-          Edit Profile
-        </CardHeader>
-        <Divider />
-        <CardBody>
-          <EditForm member={member} />
-        </CardBody>
-      </Card>
-    </div>
+    <CardInnerWrapper
+      header="Edit Profile"
+      body={<EditForm member={member} />}
+    />
   );
 };
 
