@@ -7,6 +7,7 @@ import MemberPhotos from "@/app/components/MemberPhotos";
 //import MemberPhotos from "@/components/MemberPhotos";
 import { CardHeader, Divider, CardBody, Card } from "@nextui-org/react";
 import React from "react";
+import MemberPhotoUpload from "./MemberPhotoUpload";
 //import MemberPhotoUpload from "./MemberPhotoUpload";
 
 export default async function PhotosPage() {
@@ -21,7 +22,7 @@ export default async function PhotosPage() {
       </CardHeader>
       <Divider />
       <CardBody>
-        {/* <MemberPhotoUpload /> */}
+        <MemberPhotoUpload />
         <MemberPhotos
           photos={photos}
           editing={true}
